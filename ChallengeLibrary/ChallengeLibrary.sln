@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeLibrary", "ChallengeLibrary.csproj", "{8387B61C-9F51-4D9A-A423-ABDFC0EE8A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeTests", "..\ChallengeTests\ChallengeTests.csproj", "{49B01D1A-BC28-4A84-8F4F-9F264CD3DF69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Index", "Index", "{C5CD7E0F-369F-4B0A-802E-5177ABFE5359}"
+	ProjectSection(SolutionItems) = preProject
+		..\BuildScript.ps1 = ..\BuildScript.ps1
+		..\data.js = ..\data.js
+		..\index.html = ..\index.html
+		..\index.js = ..\index.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8387B61C-9F51-4D9A-A423-ABDFC0EE8A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8387B61C-9F51-4D9A-A423-ABDFC0EE8A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8387B61C-9F51-4D9A-A423-ABDFC0EE8A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8387B61C-9F51-4D9A-A423-ABDFC0EE8A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49B01D1A-BC28-4A84-8F4F-9F264CD3DF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49B01D1A-BC28-4A84-8F4F-9F264CD3DF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49B01D1A-BC28-4A84-8F4F-9F264CD3DF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49B01D1A-BC28-4A84-8F4F-9F264CD3DF69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D3E849A-FBC8-4829-869B-2EAF1B7BC2BC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Challenge Library</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" language="javascript" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+    <h1>Challenge Library</h1>
+    <div>
+        <table width='25%'>
+            <tr>
+                <td><label>Category</label> <select id="categories"></select></td>
+                <td><label>Tags</label> <select id="tags"></select></td>
+            </tr>
+        </table>
+        <hr/>
+        <div id="show">Loading...</div>
+    </div>
+
+    <script src="index.js" language="javascript" type="text/javascript"></script>
+    <script src="data.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            display.run($('#show'), data);
+        });
+    </script>
+</body>
+</html>
