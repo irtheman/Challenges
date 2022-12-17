@@ -1,0 +1,45 @@
+﻿!Array
+4
+2
+7
+11
+15
+
+!Target Sum
+9
+
+!Indexes
+2
+0
+1
+
+~
+
+!Array
+3
+3
+2
+4
+
+!Target Sum
+6
+
+!Indexes
+2
+1
+2
+
+~
+
+!Array
+2
+3
+3
+
+!Target Sum
+6
+
+!Indexes
+2
+0
+1

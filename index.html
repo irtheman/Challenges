@@ -7,17 +7,32 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" language="javascript" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" language="javascript" type="text/javascript"></script>
+    <style>
+        table {
+            width: 75%;
+            border: 2px solid black;
+            table-layout: fixed;
+        }
+
+        th, td {
+            text-align: left;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
     <h1>Challenge Library</h1>
     <div>
-        <table width='25%'>
+        <table>
+            <tr>
+                <th colspan="2">Search</th>
+            </tr>
             <tr>
                 <td><label>Category</label> <select id="categories"></select></td>
                 <td><label>Tags</label> <select id="tags"></select></td>
             </tr>
         </table>
-        <hr/>
+        <hr />
         <div id="show">Loading...</div>
     </div>
 

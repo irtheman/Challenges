@@ -3,19 +3,30 @@ var display = (function () {
     let selectedTag = '';
 
     function filterData() {
-        if (selectedCategory !== '') {
-            $(`#${selectedCategory}`).show();
-            $('#show > div').not(`#${selectedCategory}`).hide();
-        } else {
-            $('#show > div').show();
-        };
+        $('#show > div').show();
+        $('#show > div > table > tr').show();
 
         if (selectedTag !== '') {
-            $(`#show > div > table > tr.${selectedTag}`).show();
-            $(`#show > div > table > tr`).not(`.${ selectedTag }`).hide();
-        } else {
-            $('#show > div > table > tr').show();
+            //$(`#show > div > table > tr.${selectedTag}`).show();
+            $(`#show > div > table > tr`).not(`.${selectedTag}`).hide();
+
+            $(`#show > div > table`).each(function () {
+                var count = $(`#${this.id} tr:visible`).length;
+                if (count === 0) {
+                    $(this).parent().hide();
+                }
+            });
         }
+
+        if (selectedCategory !== '') {
+            //$(`#${selectedCategory}`).show();
+            $('#show > div').not(`#${selectedCategory}`).hide();
+        };
+    }
+
+    function clean(s) {
+        return s.replace('#', 'lb')
+            .replace(/[()[\]{}]\\\//i, '_')
     }
 
     function runDisplay(elem, data) {
@@ -33,34 +44,34 @@ var display = (function () {
 
         dict = Object.keys(dict).sort().reduce((r, k) => (r[k] = dict[k], r), {});
 
-        console.log(JSON.stringify(dict));
-
         elem.empty();
 
         const tagSet = new Set();
-        let categories = $('#categories');
-        categories.append(`<option value=''></option>`);
+        const catSet = new Set();
 
         Object.keys(dict).forEach(c => {
-            categories.append(`<option value=${c}>${c}</option>`);
+            catSet.add(c);
 
             let cat = $(`<div id=${c}>`);
-            cat.append($('<h3>').html('<u>' + c + '</u>'));
+            cat.append($('<h2>').html(`<b><u>${c}</u></b>`));
             cat.append($('<p>'));
 
-            let table = $('<table width="75%" border="1">');
+            let table = $(`<table id="tbl${c}">`);
             let row = table.append($('<tr>'));
-            row.append($('<th width="500">').text('Title'));
-            row.append($('<th width="200">').text('Tags'));
-            row.append($('<th width="1000">').text('File'));
+            row.append($('<th>').text('Title'));
+            row.append($('<th>').text('Tags'));
+            row.append($('<th>').text('Description'));
+            row.append($('<th>').text('File'));
             table.append(row);
 
             dict[c].forEach(v => {
                 let ts = v.tags.replace(',', ' ');
-                let row = $(`<tr class='${ts}'>`);
+                let row = $(`<tr class='${clean(ts)}'>`);
+                let link = $('<a>').attr('href', v.file).text(v.file);
                 row.append($('<td>').text(v.title));
                 row.append($('<td>').text(ts));
-                row.append($('<td>').text(v.file).attr('href', v.file));
+                row.append($('<td>').text(v.description));
+                row.append($('<td>').append(link));
                 table.append(row);
 
                 const t = v.tags.split(',');
@@ -71,9 +82,15 @@ var display = (function () {
             elem.append(cat);
         });
 
+        let categories = $('#categories');
+        categories.append(`<option value=''></option>`);
+        let sCat = Array.from(catSet).sort();
+        sCat.forEach(c => categories.append($(`<option value=${clean(c)}>${c}</option>`)));
+
         let tags = $('#tags');
         tags.append($(`<option value=''></option>`))
-        tagSet.forEach(t => tags.append($(`<option value=${t}>${t}</option>`)));
+        let sTags = Array.from(tagSet).sort();
+        sTags.forEach(t => tags.append($(`<option value=${clean(t)}>${t}</option>`)));
 
         categories.on('change', function (e) {
             selectedCategory = this.value;

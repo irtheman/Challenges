@@ -8,35 +8,18 @@ namespace ChallengeTests.TestCases
 {
     public class DemoTests
     {
-        public class Results
+        public static Results<int[], int> Parse(string[] lines)
         {
-            public Results(int[] items, int expected)
-            {
-                Items = items;
-                Expected = expected;
-            }
+            var index = 0;
+            var items = Utilities.GetIntArray(lines, ref index);
+            var expected = Int32.Parse(lines[index]);
 
-            public int[] Items { get; }
-            public int Expected { get; }
-        }
-
-        public Results Parse(string[] lines)
-        {
-            var count = Int32.Parse(lines[0]);
-            var items = new int[count];
-            var expected = Int32.Parse(lines[count + 1]);
-
-            for (int i = 1; i <= count; i++)
-            {
-                items[i - 1] = Int32.Parse(lines[i]);
-            }
-
-            return new Results(items, expected);
+            return new Results<int[], int>(items, expected);
         }
 
         [Theory]
-        [TestData("DemoTest1,DemoTest2")]
-        public void Test2(string[] input)
+        [TestData("DemoTest")]
+        public void Test(string[] input)
         {
             var data = Parse(input);
             var test = new DemoTest();

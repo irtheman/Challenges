@@ -4,35 +4,18 @@ namespace ChallengeTests.TestCases
 {
     public class UnitTest1
     {
-        public class Results
-        {
-            public Results(int[] items, int expected)
-            {
-                Items = items;
-                Expected = expected;
-            }
-
-            public int[] Items { get; }
-            public int Expected { get; }
-        }
-
-        public string Parse1(string[] lines)
+        public static string Parse1(string[] lines)
         {
             return lines[0];
         }
 
-        public Results Parse2(string[] lines)
+        public static Results<int[], int> Parse2(string[] lines)
         {
-            var count = Int32.Parse(lines[0]);
-            var items = new int[count];
-            var expected = Int32.Parse(lines[count + 1]);
+            var index = 0;
+            var items = Utilities.GetIntArray(lines, ref index);
+            var expected = Int32.Parse(lines[index]);
 
-            for (int i = 1; i <= count; i++)
-            {
-                items[i - 1] = Int32.Parse(lines[i]);
-            }
-
-            return new Results(items, expected);
+            return new Results<int[], int>(items, expected);
         }
 
         [Theory]

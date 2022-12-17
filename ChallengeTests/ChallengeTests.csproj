@@ -27,18 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TestData\DemoTest2.txt">
+    <Content Include="TestData\**\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\DemoTest1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Test1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="TestData\Test2.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="TestData\leet1.txt" />
+    <None Remove="TestData\leet217.txt" />
+    <None Remove="TestData\leet53.txt" />
+    <None Remove="TestData\leet88.txt" />
+  </ItemGroup>
+  
 </Project>
